@@ -163,23 +163,44 @@ p{margin:0}
 .device .media-real{border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
 
 /* hero 3D scroll-triggered */
-.hero-3d-stage{perspective:1800px;transform-style:preserve-3d;height:480px;display:flex;align-items:center;justify-content:center}
-.hero-3d-container{position:relative;width:100%;height:100%;transform-style:preserve-3d}
-.hero-layer{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .08s cubic-bezier(.2,.8,.2,1)}
-.hero-layer-bg{background:radial-gradient(60% 50% at 85% 10%,rgba(255,106,61,.22),transparent 70%),radial-gradient(40% 40% at 0% 100%,rgba(255,181,71,.10),transparent 70%);opacity:0;z-index:-1}
-.hero-layer-shell{transform-style:preserve-3d}
-.hero-layer-shell .browser{width:100%;max-width:800px;margin:0 auto}
-.hero-layer-shell .phone{position:absolute;right:5%;bottom:-15%;width:22%;aspect-ratio:9/19;border-radius:20px}
-.hero-3d-stage .browser{border-radius:16px;background:var(--ink-2);border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;aspect-ratio:16/10}
+.hero-3d-stage{perspective:1800px;transform-style:preserve-3d;height:520px;display:flex;align-items:center;justify-content:center;overflow:visible}
+.hero-3d-container{position:relative;width:100%;height:100%;transform-style:preserve-3d;width:900px;max-width:90vw}
+.hero-layer{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .08s cubic-bezier(.2,.8,.2,1);will-change:transform}
+
+/* Layer 0: Background */
+.hero-layer-bg{background:radial-gradient(60% 50% at 85% 10%,rgba(255,106,61,.22),transparent 70%),radial-gradient(40% 40% at 0% 100%,rgba(255,181,71,.10),transparent 70%);opacity:0;z-index:-2}
+
+/* Layer 1: Shell (Browser) */
+.hero-layer-shell{transform-style:preserve-3d;z-index:1}
+.hero-layer-shell .browser{width:100%;max-width:800px;margin:0 auto;border-radius:16px;background:var(--ink-2);border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;aspect-ratio:16/10}
+
+/* Layer 2: Phone (Mobile) */
+.hero-layer-phone{transform-style:preserve-3d;z-index:2}
+.hero-layer-phone .phone{position:absolute;right:3%;bottom:-12%;width:22%;aspect-ratio:9/19;border-radius:20px;background:var(--ink);border:6px solid #2A2D31;box-shadow:0 30px 50px -20px rgba(0,0,0,.9);padding:14px 10px;display:flex;flex-direction:column;gap:7px}
+.hero-layer-phone .phone .ln{height:7px}
+.hero-layer-phone .phone .ln.h{height:12px}
+.hero-layer-phone .phone .pill{width:100%;height:24px;margin-top:auto;background:#25D366}
+
+/* Layer 3: Tipografia 3D */
+.hero-layer-type{transform-style:preserve-3d;z-index:3;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.hero-h1-3d{font-size:clamp(36px,6vw,64px);font-weight:800;margin:0;max-width:600px;text-align:center;color:#fff;font-family:var(--font-d);letter-spacing:-.02em;line-height:1.08;position:relative;z-index:10}
+.hero-h1-3d em{font-style:normal;color:var(--accent)}
+
+/* Layer 4: Detalhes */
+.hero-layer-details{transform-style:preserve-3d;z-index:4;display:flex;gap:16px;justify-content:center;align-items:center;pointer-events:none;bottom:40px}
+.detail-badge{padding:8px 14px;border:1px solid var(--line-d);border-radius:999px;font-size:13px;color:#E3E5E6;background:rgba(255,255,255,.03);white-space:nowrap}
 
 @media (prefers-reduced-motion:reduce){.hero-layer{transition:none!important}}
 @media (max-width:1000px){
-  .hero-3d-stage{height:360px}
-  .hero-layer-shell .phone{width:26%;right:2%}
+  .hero-3d-stage{height:400px}
+  .hero-layer-phone .phone{width:24%;right:2%}
 }
 @media (max-width:640px){
-  .hero-3d-stage{height:280px}
-  .hero-layer-shell .phone{width:28%;right:0%}
+  .hero-3d-stage{height:320px}
+  .hero-layer-phone .phone{width:26%;right:0%}
+  .hero-h1-3d{font-size:clamp(28px,5vw,48px)}
+  .hero-layer-details{flex-direction:column;gap:8px}
+  .detail-badge{font-size:12px;padding:6px 12px}
 }
 
 /* placeholder slots */
@@ -400,10 +421,10 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     <div class="hero-3d-stage" aria-hidden="true" id="hero3d">
       <div class="hero-3d-container">
         <!-- Layer 0: Background -->
-        <div class="hero-layer hero-layer-bg"></div>
+        <div class="hero-layer hero-layer-bg" data-layer="0"></div>
 
-        <!-- Layer 1: Card Shell -->
-        <div class="hero-layer hero-layer-shell">
+        <!-- Layer 1: Card Shell (Browser) -->
+        <div class="hero-layer hero-layer-shell" data-layer="1">
           <div class="browser">
             <div class="bar"><i></i><i></i><i></i><u>seunegocio.com.br</u></div>
             <div class="mock">
@@ -411,7 +432,22 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
               <div class="r"></div>
             </div>
           </div>
+        </div>
+
+        <!-- Layer 2: Phone (Mobile) -->
+        <div class="hero-layer hero-layer-phone" data-layer="2">
           <div class="phone"><div class="ln h" style="background:#E9EAEB"></div><div class="ln"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
+        </div>
+
+        <!-- Layer 3: Tipografia 3D -->
+        <div class="hero-layer hero-layer-type" data-layer="3">
+          <h1 class="hero-h1-3d">Seu negócio merece um site que passe <em>confiança</em> e facilite novos contatos.</h1>
+        </div>
+
+        <!-- Layer 4: Detalhes flutuantes -->
+        <div class="hero-layer hero-layer-details" data-layer="4">
+          <div class="detail-badge">A partir de R$397</div>
+          <div class="detail-badge">Entrega em até 5 dias</div>
         </div>
       </div>
     </div>
@@ -729,22 +765,69 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 
   /* ---------- header, sticky, reveal, 3D hero ---------- */
   const top=d.getElementById('top'), st=d.getElementById('sticky'), hero=d.getElementById('inicio'), fin=d.querySelector('.final');
-  const hero3d=d.getElementById('hero3d'), shell=d.querySelector('.hero-layer-shell');
+  const hero3d=d.getElementById('hero3d'), container=d.querySelector('.hero-3d-container');
+  const layers=d.querySelectorAll('.hero-layer');
   let finVis=false, lastY=0;
   new IntersectionObserver(en=>{ finVis=en[0].isIntersecting; onScroll(); }).observe(fin);
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ticking=false, scrollVel=0;
+
+  function applyLayerTransform(layer, p, mob, scrollVel){
+    const layerIdx=parseInt(layer.dataset.layer||0);
+    const bounce=Math.max(0,scrollVel)*.4;
+    let transform='';
+
+    // Base rotation progressiva (20-100% da altura)
+    const rotStart=Math.max(0,(p-0.2)/0.8);
+    const rotY=rotStart*16, rotX=rotStart*(mob?-10:-15);
+
+    // Separação de camadas progressiva (40-100%)
+    const sepStart=Math.max(0,(p-0.4)/0.6);
+
+    // Cada camada sai em ordem diferente
+    const layerDelay=[0, 0.05, 0.1, 0.15, 0.2][layerIdx]||0;
+    const sepProg=Math.max(0,sepStart-layerDelay);
+
+    // Layer 0 (background): aparece com opacity
+    if(layerIdx===0){
+      const opacity=sepProg>0?Math.min(1,sepProg*2):0;
+      transform=`translateZ(${-300*sepProg}px)`;
+      layer.style.opacity=opacity;
+    }
+    // Layer 1 (shell): rotaciona e avança
+    else if(layerIdx===1){
+      const tz=sepProg*(-120), ty=sepProg*60;
+      transform=`perspective(1500px) rotateY(${rotY}deg) rotateX(${rotX-bounce}deg) translateZ(${tz}px) translateY(${ty}px)`;
+    }
+    // Layer 2 (phone): sai para o lado
+    else if(layerIdx===2){
+      const tz=sepProg*100, tx=sepProg*80, ty=sepProg*40;
+      transform=`rotateY(${rotY*0.7}deg) rotateX(${rotX*0.5}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
+    }
+    // Layer 3 (typography): sai para frente com 3D
+    else if(layerIdx===3){
+      const tz=sepProg*150, ty=sepProg*-30, scl=1+sepProg*0.1;
+      transform=`rotateY(${rotY*0.5}deg) rotateX(${rotX*0.4}deg) translateZ(${tz}px) translateY(${ty}px) scale(${scl})`;
+    }
+    // Layer 4 (details): sai para frente mais ainda
+    else if(layerIdx===4){
+      const tz=sepProg*180, ty=sepProg*20;
+      transform=`rotateY(${rotY*0.3}deg) translateZ(${tz}px) translateY(${ty}px)`;
+    }
+
+    layer.style.transform=transform;
+  }
+
   function onScroll(){
     const y=scrollY, h=hero.offsetHeight;
-    scrollVel=(y-lastY)*.1;lastY=y;
+    scrollVel=(y-lastY)*.15;lastY=y;
     top.classList.toggle('solid', y>20);
     st.classList.toggle('show', y>h*0.7 && !finVis);
-    if(!reduce && hero3d && y<h*1.2){
+
+    if(!reduce && hero3d && y<h*1.5){
       const p=Math.max(0,Math.min(1,y/h));
       const mob=innerWidth<640;
-      const rot=p*12, tz=p*-80, ty=p*40, rx=p*(mob?-8:-12);
-      const bounce=Math.max(0,scrollVel)*.3;
-      shell.style.transform=`perspective(1200px) rotateY(${rot}deg) rotateX(${rx-bounce}deg) translateZ(${tz}px) translateY(${ty}px)`;
+      layers.forEach(layer=>{ applyLayerTransform(layer, p, mob, scrollVel); });
     }
     ticking=false;
   }
