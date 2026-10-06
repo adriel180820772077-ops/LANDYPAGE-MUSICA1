@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXORA Digital | Criação de Sites Profissionais</title>
+<meta name="description" content="Sites profissionais e soluções digitais para empresas e pequenos negócios. Criação de sites, dashboards, Google Ads, hospedagem e domínio.">
+<meta name="theme-color" content="#0E0F11">
+<!-- [CONFIGURAR] troque pela URL final do site quando tiver domínio -->
+<link rel="canonical" href="https://SEU-DOMINIO.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="NEXORA Digital - Soluções digitais para negócios">
+<meta property="og:description" content="Criação de sites, dashboards e soluções digitais para fortalecer a presença do seu negócio.">
+<meta property="og:url" content="https://SEU-DOMINIO.com.br/">
+<!-- [CONFIGURAR] imagem 1200x630 gerada no GPT / Nano Banana -->
+<meta property="og:image" content="https://SEU-DOMINIO.com.br/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E0F11'/%3E%3Cpath d='M18 46V18h6l16 18V18h6v28h-6L24 28v18z' fill='%23FF6A3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO CENTRAL — edite SÓ AQUI.
+   Tudo que estiver vazio ("") aparece como espaço reservado enquanto
+   showPlaceholders = true. Antes de ligar o Google Ads, preencha tudo
+   e mude showPlaceholders para false (o que faltar some/vira "Em breve").
+   ===================================================================== */
+window.siteConfig = {
+  brand: "NEXORA Digital",
+  showPlaceholders: true,
+
+  // [CONFIRMAR] número com DDI+DDD. O informado tem 1 dígito a menos (celular BR = 9 dígitos).
+  whatsapp: "+55 19 99429-155",
+  whatsappMessage: "Olá! Vi o site da NEXORA Digital e gostaria de saber mais sobre a criação de um site para minha empresa.",
+  email: "nexodoradesign@gmail.com",  // [CONFIRMAR] grafia: nexodora ou nexora?
+  instagram: "",                      // ex.: "https://instagram.com/nexoradigital"
+
+  startingPrice: "R$397",
+  priceRange: "R$397–R$597",
+  delivery: "até 5 dias",
+  maintenance: "R$80/mês",
+  guarantee: "7 dias para correções após a entrega",
+
+  gtmId: "",   // ex.: "GTM-XXXXXXX" — o script só carrega se preenchido
+
+  // Mídias: caminho do arquivo (ex.: "assets/hero.webp" ou "assets/hero.mp4").
+  // Fotos suas: SEMPRE reais. Mockups/cenas: GPT / Nano Banana. Vídeos: Flow (Veo 3).
+  media: {
+    heroMockup:     { src: "", label: "MOCKUP DO HERO", hint: "Gerar no GPT / Nano Banana · notebook + celular com um site seu · 16:10 · WebP ≤ 200 KB" },
+    heroVideo:      { src: "", label: "VÍDEO DO HERO (opcional)", hint: "Flow / Veo 3 · loop 6–8 s, sem áudio · MP4/WebM ≤ 1,5 MB · substitui o mockup se preenchido" },
+    aboutMain:      { src: "", label: "MINHA FOTO PRINCIPAL", hint: "Foto REAL sua (não gerar rosto com IA) · 4:5 · WebP" },
+    aboutWorking:   { src: "", label: "FOTO TRABALHANDO", hint: "Foto REAL no computador / Figma · 1:1 · WebP" },
+    aboutSecondary: { src: "", label: "FOTO SECUNDÁRIA", hint: "Foto REAL · ambiente, reunião ou detalhe · 1:1 · WebP" },
+    processVideo:   { src: "", label: "ANIMAÇÃO DO PROCESSO (opcional)", hint: "Flow / Veo 3 · rascunho → site pronto · 16:9 · loop sem áudio" }
+  },
+
+  // Sobre mim — linhas com [ ] são lembretes e somem quando showPlaceholders = false.
+  about: [
+    "Sou Adriel, desenvolvedor de soluções digitais e criador da NEXORA Digital.",
+    "Desenvolvo sites e produtos digitais com foco em design, tecnologia e experiência do usuário.",
+    "[ESCREVA 1–2 FRASES SOBRE SUA TRAJETÓRIA — só o que for real: formação, o que estuda, por que criou a NEXORA]",
+    "[ONDE ATENDE — ex.: atendimento online para São Paulo e região]"
+  ],
+
+  // Portfólio — url vazia = "Em breve" (nunca link quebrado).
+  portfolio: [
+    { key: "qualityNexus", title: "Quality Nexus", tag: "Projeto integrador · Produto digital", desc: "Aplicação desenvolvida no contexto acadêmico.", url: "", image: "" },
+    { key: "cafeteria",    title: "Cafeteria",     tag: "Projeto de demonstração · Site comercial", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
+    { key: "musicTeacher", title: "Professor de música", tag: "Landing page · Lançamento de curso", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
+    { key: "petFashion",   title: "Moda pet / costura", tag: "Landing page · Negócio local", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
+    { key: "petShop",      title: "Pet shop",      tag: "Projeto de demonstração · Site comercial", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" }
+  ]
+};
+</script>
+
+<style>
+:root{
+  --ink:#0E0F11; --ink-2:#17191C; --ink-3:#24272B; --line-d:#2C3035;
+  --paper:#F5F3EE; --paper-2:#ECE9E2; --line:#DAD6CD;
+  --text:#16181B; --muted:#5E625F; --muted-d:#A3A7A9;
+  --accent:#FF6A3D; --accent-2:#FFB547; --ok:#3FB37F;
+  --r:18px; --r-sm:12px;
+  --shadow:0 1px 2px rgba(0,0,0,.06),0 12px 32px -12px rgba(0,0,0,.18);
+  --font-d:"Bricolage Grotesque",system-ui,sans-serif;
+  --font:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1160px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:400 17px/1.6 var(--font);overflow-x:hidden}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-d);line-height:1.08;letter-spacing:-.02em;margin:0}
+p{margin:0}
+.wrap{width:min(100% - 32px,var(--wrap));margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{--bg:var(--accent);--fg:#160A05;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;background:var(--bg);color:var(--fg);font:600 16px/1 var(--font);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(255,106,61,.7)}
+.btn:active{transform:translateY(0)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-ghost{--bg:transparent;--fg:currentColor;border-color:currentColor}
+.btn-ghost:hover{box-shadow:none;background:rgba(127,127,127,.12)}
+.btn-dark{--bg:var(--ink);--fg:#fff}
+.btn-dark:hover{box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(14,15,17,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line-d)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:800 19px/1 var(--font-d);letter-spacing:.02em}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--ink);font-size:18px}
+.logo span{opacity:.6;font-weight:500}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{color:#D9DCDD;text-decoration:none;font-size:15px}
+.nav a:hover{color:#fff}
+.show-s{display:none}
+@media (max-width:640px){.show-s{display:inline}}
+.nav .btn{white-space:nowrap;min-height:42px;padding:0 18px;font-size:15px;color:var(--ink)}
+@media (max-width:860px){.nav a:not(.btn){display:none}}
+
+/* hero */
+.hero{position:relative;background:var(--ink);color:#fff;padding:120px 0 72px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(60% 50% at 85% 10%,rgba(255,106,61,.22),transparent 70%),
+  radial-gradient(40% 40% at 0% 100%,rgba(255,181,71,.10),transparent 70%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;background-image:linear-gradient(var(--line-d) 1px,transparent 1px),linear-gradient(90deg,var(--line-d) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent 80%);-webkit-mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent 80%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,106,61,.2)}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:800;margin:18px 0 18px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{font-size:clamp(17px,2vw,19px);color:#C4C8CA;max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;padding:0;list-style:none}
+.facts li{display:flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line-d);border-radius:999px;font-size:14.5px;color:#E3E5E6;background:rgba(255,255,255,.03)}
+.facts svg{width:16px;height:16px;color:var(--accent-2)}
+.stage{perspective:1400px}
+.device{position:relative;transform-style:preserve-3d;transform:rotateY(-14deg) rotateX(8deg);transition:transform .15s linear;will-change:transform}
+
+/* CSS mockup (fallback quando não há imagem) */
+.browser{border-radius:16px;background:var(--ink-2);border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;aspect-ratio:16/10}
+.bar{display:flex;gap:6px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line-d)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--ink-3)}
+.bar i:first-child{background:#FF6A3D}.bar i:nth-child(2){background:#FFB547}.bar i:nth-child(3){background:#3FB37F}
+.bar u{margin-left:12px;flex:1;height:22px;border-radius:6px;background:var(--ink-3);text-decoration:none;font:500 11px/22px var(--font);color:#7C8285;padding-left:10px}
+.mock{padding:22px;display:grid;grid-template-columns:1.2fr 1fr;gap:18px;height:calc(100% - 47px)}
+.mock .l{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.ln{height:10px;border-radius:5px;background:var(--ink-3)}
+.ln.h{height:20px;background:#E9EAEB;width:90%}.ln.h2{height:20px;background:#E9EAEB;width:60%}
+.ln.s{width:80%}.ln.s2{width:65%}
+.pill{width:110px;height:30px;border-radius:999px;background:var(--accent);margin-top:8px}
+.mock .r{border-radius:12px;background:linear-gradient(140deg,#2B2F34,#1C1F22);position:relative;overflow:hidden}
+.mock .r::after{content:"";position:absolute;inset:auto 14px 14px;height:46%;border-radius:10px;background:linear-gradient(120deg,rgba(255,106,61,.85),rgba(255,181,71,.7))}
+.phone{position:absolute;right:-6%;bottom:-12%;width:28%;aspect-ratio:9/19;border-radius:22px;background:var(--ink);border:6px solid #2A2D31;box-shadow:0 30px 50px -20px rgba(0,0,0,.9);transform:translateZ(60px);padding:14px 10px;display:flex;flex-direction:column;gap:7px}
+.phone .ln{height:7px}.phone .ln.h{height:12px}
+.phone .pill{width:100%;height:24px;margin-top:auto;background:#25D366}
+.device .media-real{border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+
+/* placeholder slots */
+.slot{position:relative}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:14px;border:2px dashed rgba(255,181,71,.75);border-radius:inherit;background:repeating-linear-gradient(135deg,rgba(255,181,71,.07) 0 12px,transparent 12px 24px);color:#FFD08A;font:600 12px/1.35 var(--font);pointer-events:none;z-index:3}
+.ph strong{font-size:12.5px;letter-spacing:.08em}
+.ph small{font-weight:500;opacity:.9}
+.light .ph{color:#8A4B00;border-color:#D9962B;background:repeating-linear-gradient(135deg,rgba(217,150,43,.10) 0 12px,transparent 12px 24px)}
+.todo{display:inline;background:rgba(255,181,71,.25);outline:1px dashed #D9962B;border-radius:4px;padding:0 4px;color:#7A4300;font-size:.92em}
+.no-ph .ph,.no-ph .todo{display:none!important}
+
+/* sections */
+section{padding:clamp(72px,10vw,120px) 0}
+.sec-head{max-width:680px;margin-bottom:44px}
+.kicker{font:600 13px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.sec-head h2{font-size:clamp(30px,4.4vw,46px);font-weight:700}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:18px}
+.dark{background:var(--ink);color:#fff}
+.dark .sec-head p{color:var(--muted-d)}
+
+/* problem */
+.problem{background:var(--paper)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.problem h2{font-size:clamp(30px,4.6vw,50px);font-weight:700}
+.problem h2 span{color:var(--muted)}
+.problem p{color:var(--muted);font-size:18px}
+.problem p + p{margin-top:14px;color:var(--text)}
+
+/* benefits */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.benefit{background:var(--paper);padding:28px 26px;display:flex;gap:16px;align-items:flex-start;transition:background .25s}
+.benefit:hover{background:#fff}
+.ico{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--accent)}
+.ico svg{width:22px;height:22px}
+.benefit h3{font:600 17px/1.3 var(--font);letter-spacing:0}
+.benefit p{font-size:15px;color:var(--muted);margin-top:4px}
+
+/* services */
+.services{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.svc{position:relative;border:1px solid var(--line-d);border-radius:var(--r);padding:28px;background:var(--ink-2);display:flex;flex-direction:column;gap:12px;transition:border-color .25s,transform .25s}
+.svc:hover{border-color:#4A4F55;transform:translateY(-3px)}
+.svc .ico{background:var(--ink-3)}
+.svc h3{font-size:22px;font-weight:700}
+.svc p{color:var(--muted-d);font-size:15.5px}
+.svc a{margin-top:auto;padding-top:10px;color:#fff;font-weight:600;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.svc a:hover{color:var(--accent)}
+.svc.main{grid-row:span 2;background:linear-gradient(160deg,#2A1A13 0%,var(--ink-2) 55%);border-color:rgba(255,106,61,.45)}
+.svc.main h3{font-size:clamp(26px,3vw,34px)}
+.svc.main .ico{background:var(--accent);color:var(--ink)}
+.badge{align-self:flex-start;font:600 12px/1 var(--font);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:rgba(255,106,61,.16);color:var(--accent)}
+.svc ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px;color:#D5D8DA;font-size:15px}
+.svc li{display:flex;gap:10px}.svc li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;border-radius:50%;background:var(--accent)}
+.svc.wide{grid-column:span 2}
+.eco{margin-top:20px;color:var(--muted-d);font-size:15px;display:flex;align-items:center;gap:10px}
+.eco::before{content:"";width:28px;height:1px;background:var(--line-d)}
+
+/* portfolio */
+.pf-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.pf{grid-column:span 2;display:flex;flex-direction:column;border-radius:var(--r);background:#fff;border:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s}
+.pf:nth-child(1),.pf:nth-child(2){grid-column:span 3}
+a.pf:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.pf .thumb{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,#1C1F22,#2E3237);overflow:hidden;border-radius:0}
+.pf .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+a.pf:hover .thumb img{transform:scale(1.04)}
+.pf .mono{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(28px,4vw,44px)/1 var(--font-d);color:rgba(255,255,255,.12);letter-spacing:-.02em}
+.pf .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pf .tag{font-size:13px;color:var(--muted)}
+.pf h3{font-size:21px;font-weight:700}
+.pf p{font-size:15px;color:var(--muted)}
+.pf .go{margin-top:auto;padding-top:10px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.pf .go.off{color:var(--muted);font-weight:500}
+a.pf .go{color:var(--accent)}
+.pf .thumb .ph{border-radius:0}
+.note{margin-top:22px;font-size:14px;color:var(--muted)}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;counter-reset:s}
+.steps li{position:relative;padding:22px 18px;border-radius:var(--r-sm);background:var(--paper-2);counter-increment:s;font-weight:600;font-size:16px;line-height:1.35}
+.steps li::before{content:"0" counter(s);display:block;font:800 30px/1 var(--font-d);color:var(--accent);margin-bottom:14px}
+.process-media{margin-top:26px;aspect-ratio:16/6;border-radius:var(--r);overflow:hidden;background:var(--paper-2)}
+.process-media video,.process-media img{width:100%;height:100%;object-fit:cover}
+
+/* offer */
+.offer-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:stretch}
+.offer{position:relative;border-radius:24px;padding:clamp(28px,4vw,44px);background:var(--ink-2);border:1px solid rgba(255,106,61,.4);overflow:hidden}
+.offer::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-180px;background:radial-gradient(circle,rgba(255,106,61,.28),transparent 65%)}
+.offer .price{display:flex;align-items:baseline;gap:10px;margin:18px 0 6px;flex-wrap:wrap}
+.offer .price small{color:var(--muted-d);font-size:16px}
+.offer .price strong{font:800 clamp(52px,8vw,76px)/1 var(--font-d);letter-spacing:-.03em}
+.offer .range{color:var(--muted-d);font-size:15px;max-width:30em}
+.checks{list-style:none;padding:0;margin:26px 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:16px}
+.checks svg{flex:none;width:20px;height:20px;color:var(--ok);margin-top:2px}
+.side{display:grid;gap:18px}
+.mini{border-radius:var(--r);padding:26px;border:1px solid var(--line-d);background:var(--ink-2)}
+.mini h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.mini .val{font:700 28px/1.1 var(--font-d);color:var(--accent-2);margin:8px 0}
+.mini p{color:var(--muted-d);font-size:15px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.photos{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:14px;aspect-ratio:1/1}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;background:linear-gradient(140deg,var(--paper-2),#E0DCD2)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo.main{grid-row:span 2}
+.about-text h2{font-size:clamp(30px,4.4vw,46px);font-weight:700;margin-bottom:22px}
+.about-text p{color:var(--muted);font-size:18px}
+.about-text p + p{margin-top:12px}
+.about-text p:first-of-type{color:var(--text);font-weight:500}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.trust span{font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;font:600 18px/1.35 var(--font)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-9px;border-right:2px solid var(--text);border-bottom:2px solid var(--text);transform:rotate(45deg);transition:transform .25s}
+details[open] summary::after{transform:rotate(225deg);margin-top:-2px}
+details p{padding:0 0 22px;color:var(--muted);max-width:40em}
+
+/* final cta */
+.final{text-align:center;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(50% 50% at 50% 50%,rgba(255,106,61,.25),transparent 70%)}
+.final .wrap{position:relative}
+.final h2{font-size:clamp(34px,5.6vw,60px);font-weight:800;max-width:15em;margin:0 auto}
+.final p{color:var(--muted-d);font-size:18px;margin:18px auto 32px;max-width:32em}
+.final .cta-row{justify-content:center}
+
+footer{background:#08090A;color:var(--muted-d);padding:40px 0 110px;font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+footer nav{display:flex;flex-wrap:wrap;gap:20px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+
+/* mobile sticky CTA */
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;transform:translateY(140%);transition:transform .35s}
+.sticky.show{transform:none}
+.sticky .btn{width:100%;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero-grid,.problem-grid,.about-grid,.faq-grid,.offer-grid{grid-template-columns:1fr}
+  .hero-grid{gap:48px}
+  .benefits{grid-template-columns:1fr 1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .svc.main{grid-column:span 2;grid-row:auto}
+  .svc.wide{grid-column:span 2}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .pf,.pf:nth-child(1),.pf:nth-child(2){grid-column:span 3}
+  .faq-grid{gap:20px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{padding:100px 0 56px}
+  .cta-row .btn{flex:1 1 100%}
+  .benefits,.services{grid-template-columns:1fr}
+  .svc.main,.svc.wide{grid-column:auto}
+  .steps{grid-template-columns:1fr 1fr}
+  .pf-grid{grid-template-columns:1fr}
+  .pf,.pf:nth-child(1),.pf:nth-child(2){grid-column:auto}
+  .checks{grid-template-columns:1fr}
+  .device{transform:rotateY(-6deg) rotateX(6deg)}
+  .phone{right:-2%;width:30%}
+  .process-media{aspect-ratio:16/9}
+  .sticky{display:block}
+  .facts li{font-size:13.5px;padding:8px 12px}
+  .hide-s{display:none}.logo span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="NEXORA Digital — início"><b>N</b>NEXORA <span>Digital</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#portfolio" data-ev="portfolio_click">Portfólio</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#oferta">Preço</a>
+      <a class="btn" href="#" data-wa data-ev="whatsapp_click" data-place="header"><span class="hide-s">Falar com a NEXORA</span><span class="show-s">WhatsApp</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- 1. HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">NEXORA Digital</span>
+      <h1>Seu negócio merece um site que passe <em>confiança</em> e facilite novos contatos.</h1>
+      <p class="sub">Sites profissionais, modernos e personalizados para pequenos negócios e empresas.</p>
+      <div class="cta-row">
+        <a class="btn" href="#" data-wa data-ev="whatsapp_click" data-place="hero">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+          Quero criar meu site
+        </a>
+        <a class="btn btn-ghost" href="#portfolio" data-ev="portfolio_click" data-place="hero">Ver portfólio</a>
+      </div>
+      <ul class="facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="17" cy="14" r="1.5"/></svg><span>A partir de <span data-cfg="startingPrice"></span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Entrega em <span data-cfg="delivery"></span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>Pagamento após aprovação</li>
+      </ul>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+      <div class="device" id="device">
+        <div class="slot" id="heroSlot" style="border-radius:16px">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><u>seunegocio.com.br</u></div>
+            <div class="mock">
+              <div class="l"><div class="ln h"></div><div class="ln h2"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
+              <div class="r"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone"><div class="ln h" style="background:#E9EAEB"></div><div class="ln"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEMA -->
+<section class="problem">
+  <div class="wrap problem-grid rv">
+    <h2>Seu negócio pode ser bom. <span>Sua presença digital também precisa parecer boa.</span></h2>
+    <div>
+      <p>Muitas empresas ainda dependem apenas de redes sociais, links improvisados ou páginas desatualizadas.</p>
+      <p>A NEXORA cria uma presença digital profissional para o seu cliente entender quem você é, o que você oferece e como entrar em contato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BENEFÍCIOS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="benefits rv">
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></span><div><h3>Design profissional e personalizado</h3><p>Feito para o seu negócio, não um modelo pronto.</p></div></div>
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><div><h3>Otimizado para celular</h3><p>Leitura fácil e botões confortáveis em qualquer tela.</p></div></div>
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span><div><h3>Estrutura que facilita o contato</h3><p>Informação clara e caminho direto até você.</p></div></div>
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12Z"/></svg></span><div><h3>Integração com WhatsApp</h3><p>O visitante fala com você em um toque.</p></div></div>
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><div><h3>Página rápida e organizada</h3><p>Carregamento leve, sem enrolação.</p></div></div>
+      <div class="benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span><div><h3>Pronto para o Google</h3><p>Base preparada para divulgação e anúncios.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SERVIÇOS -->
+<section class="dark" id="servicos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Serviços</span>
+      <h2>Tudo o que sua presença digital precisa, em um só lugar.</h2>
+      <p>Comece pelo site. Quando fizer sentido, a NEXORA cuida do resto.</p>
+    </div>
+    <div class="services">
+      <article class="svc main rv">
+        <span class="badge">Principal</span>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span>
+        <h3>Criação de sites</h3>
+        <p>Sites institucionais, landing pages e páginas comerciais com design profissional.</p>
+        <ul><li>Design personalizado</li><li>Otimizado para celular</li><li>Botões direto para o WhatsApp</li><li>Entrega em <span data-cfg="delivery"></span></li></ul>
+        <a href="#" data-wa data-ev="whatsapp_click" data-place="svc_site">Quero meu site →</a>
+      </article>
+      <article class="svc rv">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <h3>Dashboards</h3>
+        <p>Painéis para visualizar indicadores e informações importantes de forma clara.</p>
+        <a href="#" data-wa data-wa-msg="Olá! Vi o site da NEXORA Digital e gostaria de saber mais sobre dashboards para minha empresa." data-ev="whatsapp_click" data-place="svc_dashboard">Quero um dashboard →</a>
+      </article>
+      <article class="svc rv">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>
+        <h3>Google Ads</h3>
+        <p>Estruturação e gestão de campanhas de Pesquisa para negócios que querem gerar oportunidades.</p>
+        <a href="#" data-wa data-wa-msg="Olá! Vi o site da NEXORA Digital e gostaria de saber mais sobre gestão de Google Ads." data-ev="whatsapp_click" data-place="svc_ads">Conhecer Google Ads →</a>
+      </article>
+      <article class="svc wide rv">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span>
+        <h3>Hospedagem + domínio</h3>
+        <p>Infraestrutura para manter sua presença digital no ar com praticidade — sem você se preocupar com a parte técnica.</p>
+        <a href="#planos" data-ev="cta_click" data-place="svc_hosting">Saber mais →</a>
+      </article>
+    </div>
+    <p class="eco rv">Site, dados, anúncios e infraestrutura conectados — um único parceiro do começo ao fim.</p>
+  </div>
+</section>
+
+<!-- 5. PORTFÓLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Portfólio</span>
+      <h2>Projetos reais, para você ver antes de decidir.</h2>
+      <p>Toque em um projeto para abrir o site.</p>
+    </div>
+    <div class="pf-grid light" id="pfGrid"></div>
+    <p class="note rv">Inclui projetos acadêmicos e de demonstração, identificados em cada card.</p>
+  </div>
+</section>
+
+<!-- 6. COMO FUNCIONA -->
+<section id="como-funciona" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Como funciona</span>
+      <h2>Simples e direto, do primeiro contato ao site no ar.</h2>
+    </div>
+    <ol class="steps rv">
+      <li>Você entra em contato</li>
+      <li>Entendemos seu negócio e sua necessidade</li>
+      <li>Definimos a estrutura do projeto</li>
+      <li>Desenvolvemos o site</li>
+      <li>Você aprova</li>
+      <li>Publicamos e orientamos os próximos passos</li>
+    </ol>
+    <div class="process-media slot light rv" id="processSlot"></div>
+    <div class="cta-row rv"><a class="btn btn-dark" href="#" data-wa data-ev="whatsapp_click" data-place="process">Começar agora</a></div>
+  </div>
+</section>
+
+<!-- 7. OFERTA + 8. PLANOS -->
+<section class="dark" id="oferta">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Oferta</span>
+      <h2>Preço claro desde o início.</h2>
+    </div>
+    <div class="offer-grid">
+      <div class="offer rv">
+        <span class="badge">Criação de site profissional</span>
+        <div class="price"><small>a partir de</small><strong data-cfg="startingPrice"></strong></div>
+        <p class="range">Projetos comuns ficam entre <span data-cfg="priceRange"></span>. Se o seu precisar de mais páginas ou funções, o valor é combinado antes — sem surpresa.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg><span>Entrega em <span data-cfg="delivery"></span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Pagamento após aprovação</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Design personalizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Otimizado para celular</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Integração com WhatsApp</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg><span data-cfg="guarantee"></span></li>
+        </ul>
+        <a class="btn" href="#" data-wa data-ev="whatsapp_click" data-place="offer">Solicitar orçamento</a>
+      </div>
+      <div class="side" id="planos">
+        <div class="mini rv">
+          <h3>Manutenção opcional</h3>
+          <div class="val">a partir de <span data-cfg="maintenance"></span></div>
+          <p>Atualizações e suporte conforme o plano contratado.</p>
+        </div>
+        <div class="mini rv">
+          <h3>Hospedagem e domínio</h3>
+          <p>Seu site no ar com endereço próprio. Valores conforme a necessidade do projeto, informados no orçamento.</p>
+        </div>
+        <div class="mini rv">
+          <h3>Google Ads</h3>
+          <p>Depois do site pronto, dá para divulgar no Google com campanhas de Pesquisa. Contratado à parte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. SOBRE MIM -->
+<section id="sobre">
+  <div class="wrap about-grid">
+    <div class="photos light rv">
+      <div class="photo main slot" data-media="aboutMain"></div>
+      <div class="photo slot" data-media="aboutWorking"></div>
+      <div class="photo slot" data-media="aboutSecondary"></div>
+    </div>
+    <div class="about-text rv">
+      <span class="kicker">Sobre mim</span>
+      <h2>Quem cuida do seu projeto.</h2>
+      <div id="aboutText"></div>
+      <div class="trust">
+        <span>Atendimento direto comigo</span>
+        <span>Preço informado antes</span>
+        <span>Pagamento após aprovação</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#fff">
+  <div class="wrap faq-grid">
+    <div class="sec-head rv" style="margin:0">
+      <span class="kicker">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+      <p>Não achou sua dúvida? <a href="#" data-wa data-ev="whatsapp_click" data-place="faq" style="color:var(--accent);font-weight:600">Pergunte no WhatsApp</a>.</p>
+    </div>
+    <div class="rv">
+      <details><summary>Quanto custa criar um site?</summary><p>A criação de sites começa em <span data-cfg="startingPrice"></span>. O valor final depende do escopo e das necessidades do projeto — e é combinado antes de começar.</p></details>
+      <details><summary>Quanto tempo leva?</summary><p>Projetos dentro do escopo da oferta podem ser entregues em <span data-cfg="delivery"></span>.</p></details>
+      <details><summary>Preciso fornecer tudo pronto?</summary><p>Não. A NEXORA orienta a estrutura e organiza o conteúdo necessário para o desenvolvimento.</p></details>
+      <details><summary>Quando eu pago?</summary><p>Após aprovar o site. E você ainda tem <span data-cfg="guarantee"></span>.</p></details>
+      <details><summary>O site funciona no celular?</summary><p>Sim. O site é projetado com prioridade para celular.</p></details>
+      <details><summary>O site pode ter WhatsApp?</summary><p>Sim. Os botões levam o visitante direto para o seu WhatsApp.</p></details>
+      <details><summary>Vocês fazem Google Ads?</summary><p>Sim. O serviço pode ser contratado separadamente ou como continuidade após a criação do site.</p></details>
+      <details><summary>Vocês cuidam de domínio e hospedagem?</summary><p>Sim. A NEXORA pode oferecer hospedagem e domínio como parte da solução.</p></details>
+      <details><summary>Vocês fazem dashboards?</summary><p>Sim. Também desenvolvemos painéis personalizados para visualizar indicadores do seu negócio.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="wrap rv">
+    <h2>Pronto para colocar sua empresa na internet com aparência profissional?</h2>
+    <p>Seu site pode ser a primeira impressão certa. Conte sobre o seu negócio e receba um orçamento.</p>
+    <div class="cta-row">
+      <a class="btn" href="#" data-wa data-ev="whatsapp_click" data-place="final">Falar com a NEXORA</a>
+      <a class="btn btn-ghost" href="#" data-mail data-ev="email_click" data-place="final">Enviar e-mail</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#inicio"><b>N</b>NEXORA <span>Digital</span></a>
+    <nav aria-label="Rodapé">
+      <a href="#" data-wa data-ev="whatsapp_click" data-place="footer">WhatsApp</a>
+      <a href="#" data-mail data-ev="email_click" data-place="footer">E-mail</a>
+      <a href="#" id="igLink" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <span>© <span id="yr"></span> NEXORA Digital</span>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <a class="btn" href="#" data-wa data-ev="whatsapp_click" data-place="sticky_mobile">Quero criar meu site</a>
+</div>
+
+<script>
+(function(){
+  const C = window.siteConfig, d = document;
+  const PH = C.showPlaceholders;
+  if(!PH) d.documentElement.classList.add('no-ph');
+
+  /* ---------- tracking (GTM / GA4 / Google Ads via dataLayer) ---------- */
+  window.dataLayer = window.dataLayer || [];
+  if (C.gtmId) {
+    window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+    const s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id='+C.gtmId;d.head.appendChild(s);
+  }
+  // guarda UTMs/gclid da primeira visita para anexar aos eventos
+  const qs = new URLSearchParams(location.search), keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'];
+  let utm={}; try{ utm=JSON.parse(sessionStorage.getItem('nx_utm')||'{}'); }catch(e){}
+  keys.forEach(k=>{ if(qs.get(k)) utm[k]=qs.get(k); });
+  try{ sessionStorage.setItem('nx_utm',JSON.stringify(utm)); }catch(e){}
+  function track(event, data){ window.dataLayer.push(Object.assign({event}, utm, data||{})); }
+  window.nxTrack = track;
+
+  /* ---------- texto de config ---------- */
+  d.querySelectorAll('[data-cfg]').forEach(el=>{ el.textContent = C[el.dataset.cfg] || ''; });
+  d.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- WhatsApp / e-mail ---------- */
+  const waNum = (C.whatsapp||'').replace(/\D/g,'');
+  const waUrl = msg => 'https://wa.me/'+waNum+'?text='+encodeURIComponent(msg||C.whatsappMessage);
+  d.querySelectorAll('[data-wa]').forEach(a=>{
+    a.href = waUrl(a.dataset.waMsg); a.target='_blank'; a.rel='noopener';
+  });
+  d.querySelectorAll('[data-mail]').forEach(a=>{
+    a.href='mailto:'+C.email+'?subject='+encodeURIComponent('Orçamento de site — NEXORA Digital');
+  });
+  const ig=d.getElementById('igLink'); if(!C.instagram) ig.remove(); else ig.href=C.instagram;
+
+  d.addEventListener('click',e=>{
+    const a=e.target.closest('[data-ev]'); if(!a) return;
+    track(a.dataset.ev,{cta_place:a.dataset.place||'',cta_text:a.textContent.trim().slice(0,60)});
+  });
+
+  /* ---------- mídia / espaços reservados ---------- */
+  const isVid = s => /\.(mp4|webm)(\?|$)/i.test(s);
+  function mediaEl(src, alt, eager){
+    if(isVid(src)){
+      const v=d.createElement('video'); Object.assign(v,{src,muted:true,loop:true,autoplay:true,playsInline:true});
+      v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.preload = eager?'auto':'none'; v.setAttribute('aria-hidden','true');
+      if(!eager){ new IntersectionObserver((en,o)=>{ if(en[0].isIntersecting){ v.preload='auto'; v.play().catch(()=>{}); o.disconnect(); } }).observe(v); }
+      return v;
+    }
+    const i=d.createElement('img'); i.src=src; i.alt=alt||''; i.decoding='async'; if(!eager) i.loading='lazy'; return i;
+  }
+  function phBox(m){ const p=d.createElement('div'); p.className='ph'; p.innerHTML='<strong>'+m.label+'</strong><small>'+m.hint+'</small>'; return p; }
+
+  // hero: vídeo > imagem > mockup em CSS
+  const hs=d.getElementById('heroSlot'), hv=C.media.heroVideo, hm=C.media.heroMockup;
+  const heroSrc = hv.src || hm.src;
+  if(heroSrc){ const w=d.createElement('div'); w.className='media-real'; w.appendChild(mediaEl(heroSrc,'Exemplo de site criado pela NEXORA Digital',true)); hs.replaceChildren(w); d.querySelector('.phone').remove(); }
+  else if(PH){ hs.appendChild(phBox({label:hm.label+' (ou vídeo Veo 3)',hint:hm.hint})); }
+
+  // fotos do sobre
+  const alts={aboutMain:'Adriel, criador da NEXORA Digital',aboutWorking:'Adriel trabalhando em um projeto',aboutSecondary:'Adriel'};
+  d.querySelectorAll('[data-media]').forEach(el=>{
+    const m=C.media[el.dataset.media];
+    if(m.src) el.appendChild(mediaEl(m.src,alts[el.dataset.media]));
+    else if(PH) el.appendChild(phBox(m));
+    else if(el.dataset.media!=='aboutMain') el.remove();
+  });
+  if(!C.media.aboutMain.src && !PH){ d.querySelector('.photos').remove(); d.querySelector('.about-grid').style.gridTemplateColumns='1fr'; }
+
+  // processo
+  const ps=d.getElementById('processSlot'), pm=C.media.processVideo;
+  if(pm.src) ps.appendChild(mediaEl(pm.src,'Animação do processo de criação'));
+  else if(PH) ps.appendChild(phBox(pm)); else ps.remove();
+
+  // sobre: texto
+  const at=d.getElementById('aboutText');
+  C.about.forEach(t=>{
+    const isTodo=/^\[.*\]$/.test(t.trim()); if(isTodo && !PH) return;
+    const p=d.createElement('p'); if(isTodo){ const s=d.createElement('span'); s.className='todo'; s.textContent=t; p.appendChild(s);} else p.textContent=t; at.appendChild(p);
+  });
+
+  // portfólio
+  const g=d.getElementById('pfGrid');
+  C.portfolio.forEach(p=>{
+    const has=!!p.url, el=d.createElement(has?'a':'div');
+    el.className='pf rv';
+    if(has){ el.href=p.url; el.target='_blank'; el.rel='noopener'; el.dataset.ev='portfolio_click'; el.dataset.place='pf_'+p.key; el.setAttribute('aria-label','Abrir projeto '+p.title+' em nova aba'); }
+    const th=d.createElement('div'); th.className='thumb slot';
+    if(p.image) th.appendChild(mediaEl(p.image,'Projeto '+p.title));
+    else { const mo=d.createElement('div'); mo.className='mono'; mo.textContent=p.title; th.appendChild(mo);
+      if(PH) th.appendChild(phBox({label:'PRINT / MOCKUP — '+p.title.toUpperCase(),hint:'Print real do site ou mockup no Nano Banana · 16:10 · WebP'})); }
+    const desc = /^\[.*\]$/.test(p.desc) ? (PH?'<span class="todo">'+p.desc+'</span>':'') : p.desc;
+    const go = has ? '<span class="go">Abrir projeto ↗</span>' : '<span class="go off">Em breve'+(PH?' <span class="todo">[LINK '+p.title.toUpperCase()+']</span>':'')+'</span>';
+    const b=d.createElement('div'); b.className='body';
+    b.innerHTML='<span class="tag">'+p.tag+'</span><h3>'+p.title+'</h3>'+(desc?'<p>'+desc+'</p>':'')+go;
+    el.append(th,b); g.appendChild(el);
+  });
+
+  /* ---------- header, sticky, reveal, tilt ---------- */
+  const top=d.getElementById('top'), st=d.getElementById('sticky'), hero=d.getElementById('inicio'), fin=d.querySelector('.final');
+  let finVis=false;
+  new IntersectionObserver(en=>{ finVis=en[0].isIntersecting; onScroll(); }).observe(fin);
+  const dev=d.getElementById('device'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking=false;
+  function onScroll(){
+    const y=scrollY, h=hero.offsetHeight;
+    top.classList.toggle('solid', y>20);
+    st.classList.toggle('show', y>h*0.7 && !finVis);
+    if(!reduce && dev && y<h){
+      const k=y/h, mob=innerWidth<640;
+      dev.style.transform='rotateY('+((mob?-6:-14)+k*14)+'deg) rotateX('+((mob?6:8)-k*8)+'deg) translateY('+(k*-30)+'px)';
+    }
+    ticking=false;
+  }
+  addEventListener('scroll',()=>{ if(!ticking){ ticking=true; requestAnimationFrame(onScroll);} },{passive:true});
+  onScroll();
+
+  if('IntersectionObserver' in window && !reduce){
+    const io=new IntersectionObserver(en=>en.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
+    d.querySelectorAll('.rv').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*60+'ms'; io.observe(el); });
+  } else d.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+})();
+</script>
+</body>
+</html>
