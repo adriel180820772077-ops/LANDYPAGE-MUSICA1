@@ -181,15 +181,6 @@ p{margin:0}
 .hero-layer-phone .phone .ln.h{height:12px}
 .hero-layer-phone .phone .pill{width:100%;height:24px;margin-top:auto;background:#25D366}
 
-/* Layer 3: Tipografia 3D */
-.hero-layer-type{transform-style:preserve-3d;z-index:3;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.hero-h1-3d{font-size:clamp(36px,6vw,64px);font-weight:800;margin:0;max-width:600px;text-align:center;color:#fff;font-family:var(--font-d);letter-spacing:-.02em;line-height:1.08;position:relative;z-index:10}
-.hero-h1-3d em{font-style:normal;color:var(--accent)}
-
-/* Layer 4: Detalhes */
-.hero-layer-details{transform-style:preserve-3d;z-index:4;display:flex;gap:16px;justify-content:center;align-items:center;pointer-events:none;bottom:40px}
-.detail-badge{padding:8px 14px;border:1px solid var(--line-d);border-radius:999px;font-size:13px;color:#E3E5E6;background:rgba(255,255,255,.03);white-space:nowrap}
-
 @media (prefers-reduced-motion:reduce){.hero-layer{transition:none!important}}
 @media (max-width:1000px){
   .hero-3d-stage{height:400px}
@@ -437,17 +428,6 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
         <!-- Layer 2: Phone (Mobile) -->
         <div class="hero-layer hero-layer-phone" data-layer="2">
           <div class="phone"><div class="ln h" style="background:#E9EAEB"></div><div class="ln"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
-        </div>
-
-        <!-- Layer 3: Tipografia 3D -->
-        <div class="hero-layer hero-layer-type" data-layer="3">
-          <h1 class="hero-h1-3d">Seu negócio merece um site que passe <em>confiança</em> e facilite novos contatos.</h1>
-        </div>
-
-        <!-- Layer 4: Detalhes flutuantes -->
-        <div class="hero-layer hero-layer-details" data-layer="4">
-          <div class="detail-badge">A partir de R$397</div>
-          <div class="detail-badge">Entrega em até 5 dias</div>
         </div>
       </div>
     </div>
@@ -774,45 +754,35 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 
   function applyLayerTransform(layer, p, mob, scrollVel){
     const layerIdx=parseInt(layer.dataset.layer||0);
-    const bounce=Math.max(0,scrollVel)*.4;
+    const bounce=Math.max(0,scrollVel)*.5;
     let transform='';
 
-    // Base rotation progressiva (20-100% da altura)
-    const rotStart=Math.max(0,(p-0.2)/0.8);
-    const rotY=rotStart*16, rotX=rotStart*(mob?-10:-15);
+    // Rotação progressiva
+    const rotStart=Math.max(0,(p-0.15)/0.85);
+    const rotY=rotStart*20, rotX=rotStart*(mob?-12:-18);
 
-    // Separação de camadas progressiva (40-100%)
-    const sepStart=Math.max(0,(p-0.4)/0.6);
+    // Separação de camadas (começa aos 35%)
+    const sepStart=Math.max(0,(p-0.35)/0.65);
 
-    // Cada camada sai em ordem diferente
-    const layerDelay=[0, 0.05, 0.1, 0.15, 0.2][layerIdx]||0;
+    // Delay por camada
+    const layerDelay=[0, 0.08, 0.16][layerIdx]||0;
     const sepProg=Math.max(0,sepStart-layerDelay);
 
-    // Layer 0 (background): aparece com opacity
     if(layerIdx===0){
-      const opacity=sepProg>0?Math.min(1,sepProg*2):0;
-      transform=`translateZ(${-300*sepProg}px)`;
+      // Background: fade in
+      const opacity=sepProg>0?Math.min(1,sepProg*3):0;
+      transform=`translateZ(${-400*sepProg}px)`;
       layer.style.opacity=opacity;
     }
-    // Layer 1 (shell): rotaciona e avança
     else if(layerIdx===1){
-      const tz=sepProg*(-120), ty=sepProg*60;
-      transform=`perspective(1500px) rotateY(${rotY}deg) rotateX(${rotX-bounce}deg) translateZ(${tz}px) translateY(${ty}px)`;
+      // Browser shell: rotação + profundidade + bounce
+      const tz=sepProg*(-180), ty=sepProg*80;
+      transform=`perspective(1600px) rotateY(${rotY}deg) rotateX(${rotX-bounce}deg) translateZ(${tz}px) translateY(${ty}px)`;
     }
-    // Layer 2 (phone): sai para o lado
     else if(layerIdx===2){
-      const tz=sepProg*100, tx=sepProg*80, ty=sepProg*40;
-      transform=`rotateY(${rotY*0.7}deg) rotateX(${rotX*0.5}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
-    }
-    // Layer 3 (typography): sai para frente com 3D
-    else if(layerIdx===3){
-      const tz=sepProg*150, ty=sepProg*-30, scl=1+sepProg*0.1;
-      transform=`rotateY(${rotY*0.5}deg) rotateX(${rotX*0.4}deg) translateZ(${tz}px) translateY(${ty}px) scale(${scl})`;
-    }
-    // Layer 4 (details): sai para frente mais ainda
-    else if(layerIdx===4){
-      const tz=sepProg*180, ty=sepProg*20;
-      transform=`rotateY(${rotY*0.3}deg) translateZ(${tz}px) translateY(${ty}px)`;
+      // Phone: sai para lado e frente
+      const tz=sepProg*140, tx=sepProg*100, ty=sepProg*60;
+      transform=`rotateY(${rotY*0.8}deg) rotateX(${rotX*0.6}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
     }
 
     layer.style.transform=transform;
