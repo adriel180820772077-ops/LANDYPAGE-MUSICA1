@@ -67,10 +67,11 @@ window.siteConfig = {
 
   // Portfólio — url vazia = "Em breve" (nunca link quebrado).
   portfolio: [
-    { key: "qualityNexus", title: "Quality Nexus", tag: "Projeto integrador · Produto digital", desc: "Aplicação desenvolvida no contexto acadêmico.", url: "", image: "" },
+    { key: "qualityNexus", title: "Quality Nexus", tag: "Projeto integrador · Produto digital", desc: "Aplicação desenvolvida no contexto acadêmico.", url: "https://qualitynexustcc.adriel180820772077.workers.dev/", image: "" },
     { key: "cafeteria",    title: "Cafeteria",     tag: "Projeto de demonstração · Site comercial", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
-    { key: "musicTeacher", title: "Professor de música", tag: "Landing page · Lançamento de curso", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
+    { key: "musicTeacher", title: "Professor de música", tag: "Landing page · Lançamento de curso", desc: "[DESCREVA EM 1 FRASE]", url: "https://adriel180820772077-ops.github.io/LANDYPAGE-MUSICA1/", image: "" },
     { key: "petFashion",   title: "Moda pet / costura", tag: "Landing page · Negócio local", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" },
+    { key: "smile",        title: "Smile Sharing Platform", tag: "Projeto de demonstração · Plataforma web", desc: "[DESCREVA EM 1 FRASE]", url: "https://smile-sharing-platform.lovable.app", image: "" },
     { key: "petShop",      title: "Pet shop",      tag: "Projeto de demonstração · Site comercial", desc: "[DESCREVA EM 1 FRASE]", url: "", image: "" }
   ]
 };
@@ -110,7 +111,7 @@ p{margin:0}
 .btn-dark:hover{box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
 
 /* header */
-.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid var(--line-d);background:rgba(14,15,17,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .top.solid{background:rgba(14,15,17,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line-d)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:800 19px/1 var(--font-d);letter-spacing:.02em}
@@ -189,9 +190,6 @@ p{margin:0}
 @media (max-width:640px){
   .hero-3d-stage{height:320px}
   .hero-layer-phone .phone{width:26%;right:0%}
-  .hero-h1-3d{font-size:clamp(28px,5vw,48px)}
-  .hero-layer-details{flex-direction:column;gap:8px}
-  .detail-badge{font-size:12px;padding:6px 12px}
 }
 
 /* placeholder slots */
@@ -332,8 +330,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 .sticky .btn{width:100%;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+.js-rv .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js-rv .rv.in{opacity:1;transform:none}
 
 /* responsive */
 @media (max-width:1000px){
@@ -366,7 +364,7 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .rv{opacity:1;transform:none}
+  .js-rv .rv{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -698,12 +696,6 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   }
   function phBox(m){ const p=d.createElement('div'); p.className='ph'; p.innerHTML='<strong>'+m.label+'</strong><small>'+m.hint+'</small>'; return p; }
 
-  // hero: vídeo > imagem > mockup em CSS
-  const hs=d.getElementById('heroSlot'), hv=C.media.heroVideo, hm=C.media.heroMockup;
-  const heroSrc = hv.src || hm.src;
-  if(heroSrc){ const w=d.createElement('div'); w.className='media-real'; w.appendChild(mediaEl(heroSrc,'Exemplo de site criado pela NEXORA Digital',true)); hs.replaceChildren(w); d.querySelector('.phone').remove(); }
-  else if(PH){ hs.appendChild(phBox({label:hm.label+' (ou vídeo Veo 3)',hint:hm.hint})); }
-
   // fotos do sobre
   const alts={aboutMain:'Adriel, criador da NEXORA Digital',aboutWorking:'Adriel trabalhando em um projeto',aboutSecondary:'Adriel'};
   d.querySelectorAll('[data-media]').forEach(el=>{
@@ -805,6 +797,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   onScroll();
 
   if('IntersectionObserver' in window && !reduce){
+    d.documentElement.classList.add('js-rv');
+    setTimeout(()=>d.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),2500);
     const io=new IntersectionObserver(en=>en.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
     d.querySelectorAll('.rv').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*60+'ms'; io.observe(el); });
   } else d.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
