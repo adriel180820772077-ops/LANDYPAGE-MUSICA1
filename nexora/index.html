@@ -162,6 +162,26 @@ p{margin:0}
 .phone .pill{width:100%;height:24px;margin-top:auto;background:#25D366}
 .device .media-real{border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
 
+/* hero 3D scroll-triggered */
+.hero-3d-stage{perspective:1800px;transform-style:preserve-3d;height:480px;display:flex;align-items:center;justify-content:center}
+.hero-3d-container{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.hero-layer{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .08s cubic-bezier(.2,.8,.2,1)}
+.hero-layer-bg{background:radial-gradient(60% 50% at 85% 10%,rgba(255,106,61,.22),transparent 70%),radial-gradient(40% 40% at 0% 100%,rgba(255,181,71,.10),transparent 70%);opacity:0;z-index:-1}
+.hero-layer-shell{transform-style:preserve-3d}
+.hero-layer-shell .browser{width:100%;max-width:800px;margin:0 auto}
+.hero-layer-shell .phone{position:absolute;right:5%;bottom:-15%;width:22%;aspect-ratio:9/19;border-radius:20px}
+.hero-3d-stage .browser{border-radius:16px;background:var(--ink-2);border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;aspect-ratio:16/10}
+
+@media (prefers-reduced-motion:reduce){.hero-layer{transition:none!important}}
+@media (max-width:1000px){
+  .hero-3d-stage{height:360px}
+  .hero-layer-shell .phone{width:26%;right:2%}
+}
+@media (max-width:640px){
+  .hero-3d-stage{height:280px}
+  .hero-layer-shell .phone{width:28%;right:0%}
+}
+
 /* placeholder slots */
 .slot{position:relative}
 .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:14px;border:2px dashed rgba(255,181,71,.75);border-radius:inherit;background:repeating-linear-gradient(135deg,rgba(255,181,71,.07) 0 12px,transparent 12px 24px);color:#FFD08A;font:600 12px/1.35 var(--font);pointer-events:none;z-index:3}
@@ -354,10 +374,11 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 </header>
 
 <main>
-<!-- 1. HERO -->
+<!-- 1. HERO 3D -->
 <section class="hero" id="inicio">
   <div class="wrap hero-grid">
-    <div>
+    <!-- TEXTO -->
+    <div class="hero-text">
       <span class="eyebrow">NEXORA Digital</span>
       <h1>Seu negócio merece um site que passe <em>confiança</em> e facilite novos contatos.</h1>
       <p class="sub">Sites profissionais, modernos e personalizados para pequenos negócios e empresas.</p>
@@ -375,9 +396,14 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
       </ul>
     </div>
 
-    <div class="stage" aria-hidden="true">
-      <div class="device" id="device">
-        <div class="slot" id="heroSlot" style="border-radius:16px">
+    <!-- 3D STAGE -->
+    <div class="hero-3d-stage" aria-hidden="true" id="hero3d">
+      <div class="hero-3d-container">
+        <!-- Layer 0: Background -->
+        <div class="hero-layer hero-layer-bg"></div>
+
+        <!-- Layer 1: Card Shell -->
+        <div class="hero-layer hero-layer-shell">
           <div class="browser">
             <div class="bar"><i></i><i></i><i></i><u>seunegocio.com.br</u></div>
             <div class="mock">
@@ -385,8 +411,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
               <div class="r"></div>
             </div>
           </div>
+          <div class="phone"><div class="ln h" style="background:#E9EAEB"></div><div class="ln"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
         </div>
-        <div class="phone"><div class="ln h" style="background:#E9EAEB"></div><div class="ln"></div><div class="ln s"></div><div class="ln s2"></div><div class="pill"></div></div>
       </div>
     </div>
   </div>
@@ -701,19 +727,24 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     el.append(th,b); g.appendChild(el);
   });
 
-  /* ---------- header, sticky, reveal, tilt ---------- */
+  /* ---------- header, sticky, reveal, 3D hero ---------- */
   const top=d.getElementById('top'), st=d.getElementById('sticky'), hero=d.getElementById('inicio'), fin=d.querySelector('.final');
-  let finVis=false;
+  const hero3d=d.getElementById('hero3d'), shell=d.querySelector('.hero-layer-shell');
+  let finVis=false, lastY=0;
   new IntersectionObserver(en=>{ finVis=en[0].isIntersecting; onScroll(); }).observe(fin);
-  const dev=d.getElementById('device'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let ticking=false;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking=false, scrollVel=0;
   function onScroll(){
     const y=scrollY, h=hero.offsetHeight;
+    scrollVel=(y-lastY)*.1;lastY=y;
     top.classList.toggle('solid', y>20);
     st.classList.toggle('show', y>h*0.7 && !finVis);
-    if(!reduce && dev && y<h){
-      const k=y/h, mob=innerWidth<640;
-      dev.style.transform='rotateY('+((mob?-6:-14)+k*14)+'deg) rotateX('+((mob?6:8)-k*8)+'deg) translateY('+(k*-30)+'px)';
+    if(!reduce && hero3d && y<h*1.2){
+      const p=Math.max(0,Math.min(1,y/h));
+      const mob=innerWidth<640;
+      const rot=p*12, tz=p*-80, ty=p*40, rx=p*(mob?-8:-12);
+      const bounce=Math.max(0,scrollVel)*.3;
+      shell.style.transform=`perspective(1200px) rotateY(${rot}deg) rotateX(${rx-bounce}deg) translateZ(${tz}px) translateY(${ty}px)`;
     }
     ticking=false;
   }
