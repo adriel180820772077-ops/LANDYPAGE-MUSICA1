@@ -223,6 +223,38 @@ p{margin:0}
 }
 @media (prefers-reduced-motion:reduce){.hl-fx{display:none}}
 
+/* hero no celular: movimento 2D suave (sem profundidade) */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pIn{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.025)}}
+@keyframes pan{0%,100%{transform:scale(1.04) translateX(0)}50%{transform:scale(1.12) translateX(-10px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes cfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes glowp{0%,100%{opacity:.5}50%{opacity:.95}}
+@keyframes draw{0%{stroke-dashoffset:170}40%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes shine{0%{transform:translateX(-130%)}35%,100%{transform:translateX(130%)}}
+@media (max-width:1000px){
+  .hl{will-change:auto}
+  .hero-card{animation:cfloat 7s ease-in-out infinite}
+  .hl-glow{animation:glowp 6s ease-in-out infinite}
+  .hl-nav{animation:rise .7s .05s both}
+  .hl-type{animation:rise .8s .15s both}
+  .hl-copy{animation:rise .8s .3s both}
+  .hl-cta{animation:rise .8s .42s both}
+  .hl-facts{animation:rise .8s .54s both}
+  .hl-photo img{animation:pan 16s ease-in-out infinite}
+  .hl-person{transform-origin:50% 100%;animation:pIn 1s .25s both,breathe 6s 1.3s ease-in-out infinite}
+  .hl-ui{animation:bob 5s ease-in-out infinite}
+  .hl-chip{animation:bob 3.8s -1s ease-in-out infinite}
+  .hl-ui svg path{stroke-dasharray:170;animation:draw 5s ease-in-out infinite}
+  .hl-fx{opacity:1}
+  .hl-fx .r2{animation:bob 4s ease-in-out infinite}
+  .hl-fx .r3{right:8px;animation:bob 3.2s -.8s ease-in-out infinite}
+  .hl-cta .btn:not(.btn-ghost){position:relative;overflow:hidden}
+  .hl-cta .btn:not(.btn-ghost)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-130%);animation:shine 4.5s 1.5s infinite}
+  .hero-card.off,.hero-card.off *,.hero-card.off *::after{animation-play-state:paused!important}
+}
+
 /* placeholder slots */
 .slot{position:relative}
 .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:14px;border:2px dashed rgba(255,181,71,.75);border-radius:inherit;background:repeating-linear-gradient(135deg,rgba(255,181,71,.07) 0 12px,transparent 12px 24px);color:#FFD08A;font:600 12px/1.35 var(--font);pointer-events:none;z-index:3}
@@ -837,13 +869,19 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   if(card && !reduce){
     const L={}; card.querySelectorAll('[data-l]').forEach(e=>L[e.dataset.l]=e);
     const sm=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
-    let tx=0,ty=0,mx=0,my=0,seen=true;
+    let tx=0,ty=0,mx=0,my=0,seen=true,wasMob=false;
     addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2},{passive:true});
     new IntersectionObserver(en=>{seen=en[0].isIntersecting}).observe(card);
     const t0=performance.now();
     function frame(now){
       requestAnimationFrame(frame);
+      card.classList.toggle('off',!seen);
       if(!seen) return;
+      if(innerWidth<=1000){
+        if(!wasMob){wasMob=true;card.style.transform='';Object.values(L).forEach(e=>{e.style.transform='';e.style.opacity=''});L.type.querySelector('h1').style.removeProperty('--ex')}
+        return;
+      }
+      wasMob=false;
       const t=((now-t0)%8000)/8000, mob=innerWidth<=1000, k=mob?.22:1, kz=mob?0:1, rel=1-sm(.92,1,t);
       const sep=i=>sm(.3+i*.04,.85,t)*rel;
       const rotY=(-6*sm(.15,.3,t)+14*sm(.3,.55,t))*rel*k;
