@@ -844,21 +844,21 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     function frame(now){
       requestAnimationFrame(frame);
       if(!seen) return;
-      const t=((now-t0)%8000)/8000, k=innerWidth<640?.5:1, rel=1-sm(.92,1,t);
+      const t=((now-t0)%8000)/8000, mob=innerWidth<=1000, k=mob?.22:1, kz=mob?0:1, rel=1-sm(.92,1,t);
       const sep=i=>sm(.3+i*.04,.85,t)*rel;
       const rotY=(-6*sm(.15,.3,t)+14*sm(.3,.55,t))*rel*k;
       const rotX=-4*sm(.25,.6,t)*rel*k;
       mx+=(tx-mx)*.06; my+=(ty-my)*.06;
       card.style.transform='rotateY('+(rotY+mx*4*k).toFixed(2)+'deg) rotateX('+(rotX-my*3*k).toFixed(2)+'deg)';
       L.glow.style.opacity=(.6+.4*sm(0,.15,t)*rel).toFixed(2);
-      L.glow.style.transform='translateZ('+(-140*sep(0)*k).toFixed(1)+'px)';
-      const z=(el,i,d,x,y)=>{const v=sep(i);el.style.transform='translateZ('+(d*v*k).toFixed(1)+'px)'+(x?' translateX('+(x*v*k).toFixed(1)+'px)':'')+(y?' translateY('+(y*v*k).toFixed(1)+'px)':'');return v};
+      L.glow.style.transform='translateZ('+(-140*sep(0)*kz).toFixed(1)+'px)';
+      const z=(el,i,d,x,y)=>{const v=sep(i);el.style.transform='translateZ('+(d*v*kz).toFixed(1)+'px)'+(x?' translateX('+(x*v*kz).toFixed(1)+'px)':'')+(y?' translateY('+(y*v*kz).toFixed(1)+'px)':'');return v};
       z(L.shell,1,-60);
       z(L.nav,2,115);
       z(L.copy,3,95);
       z(L.facts,4,125);
       const st4=z(L.type,4,140);
-      L.type.querySelector('h1').style.setProperty('--ex',(st4*5*k).toFixed(2));
+      L.type.querySelector('h1').style.setProperty('--ex',(st4*5*kz).toFixed(2));
       z(L.cta,5,165);
       z(L.person,5,260,-8,-22);
       z(L.ui,6,185,12);
