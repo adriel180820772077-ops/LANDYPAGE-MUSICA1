@@ -609,6 +609,39 @@ details[open] p{animation:rise .45s ease both}
 @keyframes heroPop{0%,100%{transform:none}20%{transform:translateY(-10px) scale(1.03)}42%{transform:translateY(-26px) scale(1.12) rotate(-1.2deg)}58%{transform:translateY(-22px) scale(1.11) rotate(1.2deg)}80%{transform:translateY(-4px) scale(1.01)}}
 @keyframes uiSlide{0%,100%{transform:none}25%{transform:translate(-8px,-12px) rotate(-3deg)}45%{transform:translate(10px,-22px) rotate(4deg) scale(1.08)}70%{transform:translate(0,-6px) rotate(-1deg)}}
 @media (prefers-reduced-motion:reduce){.hl-halo,.hl-sparks,.hl-photo::before,.hl-shell::after{display:none}}
+
+/* ===== movimento contínuo nas seções claras ===== */
+section>.wrap{position:relative;z-index:1}
+.lt{position:relative;overflow:hidden}
+.orbs.soft i{background:radial-gradient(circle,rgba(255,106,61,.13),transparent 65%)}
+.orbs.soft i:nth-child(2){background:radial-gradient(circle,rgba(255,181,71,.14),transparent 65%)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.benefit>div{animation:floaty 5s ease-in-out infinite}
+.benefit:nth-child(2)>div{animation-delay:-1s}.benefit:nth-child(3)>div{animation-delay:-2s}
+.benefit:nth-child(4)>div{animation-delay:-3s}.benefit:nth-child(5)>div{animation-delay:-4s}.benefit:nth-child(6)>div{animation-delay:-2.5s}
+@keyframes kb{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(-2%,-3%)}}
+.pf .thumb img{animation:kb 12s ease-in-out infinite alternate}
+.pf:nth-child(2) .thumb img{animation-delay:-4s}.pf:nth-child(3) .thumb img{animation-delay:-8s}.pf:nth-child(4) .thumb img{animation-delay:-2s}
+.photos.in .photo img{animation:kb 14s 1.6s ease-in-out infinite alternate}
+@keyframes stepWave{0%,22%,100%{transform:none;box-shadow:none}9%{transform:translateY(-10px) scale(1.05);box-shadow:0 18px 34px -14px rgba(255,106,61,.55)}}
+.steps.in li{animation:stepWave 6s ease-in-out infinite}
+.steps.in li:nth-child(1){animation-delay:1.6s}.steps.in li:nth-child(2){animation-delay:2.6s}.steps.in li:nth-child(3){animation-delay:3.6s}
+.steps.in li:nth-child(4){animation-delay:4.6s}.steps.in li:nth-child(5){animation-delay:5.6s}.steps.in li:nth-child(6){animation-delay:6.6s}
+@keyframes shimmer2{0%{background-position:100% 0}100%{background-position:-200% 0}}
+.problem h2 .mut .w>span{background:linear-gradient(90deg,var(--muted) 0%,var(--muted) 40%,var(--accent) 50%,var(--muted) 60%,var(--muted) 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer2 4.5s linear infinite}
+.rot{display:inline-grid;vertical-align:top;height:1.6em;line-height:1.6em;overflow:hidden;color:var(--accent);font-weight:700}
+.rot span{grid-area:1/1;white-space:nowrap;opacity:0;animation:rotw 10s infinite}
+.rot span:nth-child(2){animation-delay:2s}.rot span:nth-child(3){animation-delay:4s}.rot span:nth-child(4){animation-delay:6s}.rot span:nth-child(5){animation-delay:8s}
+@keyframes rotw{0%{opacity:0;transform:translateY(100%)}4%,18%{opacity:1;transform:none}22%,100%{opacity:0;transform:translateY(-100%)}}
+@keyframes logoFlip{0%,82%,100%{transform:none}90%{transform:rotateY(180deg) scale(1.15)}96%{transform:rotateY(360deg)}}
+.logo b{animation:logoFlip 6s ease-in-out infinite}
+@keyframes fabShake{0%,84%,100%{transform:none}87%{transform:rotate(-18deg) scale(1.15)}90%{transform:rotate(16deg) scale(1.15)}93%{transform:rotate(-10deg)}96%{transform:rotate(6deg)}}
+.fab-wa svg{animation:fabShake 6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.6)}}
+.kicker::after{content:"";display:inline-block;width:6px;height:6px;margin-left:10px;vertical-align:middle;border-radius:50%;background:currentColor;animation:blink 1.3s ease-in-out infinite}
+summary{transition:transform .25s,color .25s}
+summary:hover{transform:translateX(6px);color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.rot span:not(:first-child){display:none}.rot span{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -692,7 +725,7 @@ details[open] p{animation:rise .45s ease both}
     <div>
       <p>Muita gente depende só de redes sociais ou links soltos. O cliente não acha informação clara e vai embora.</p>
       <p>A NEXORA mostra, em poucos segundos, quem você é, o que oferece e como falar com você.</p>
-      <p class="for">Para pequenos negócios, lojas, restaurantes, profissionais e empresas de serviços.</p>
+      <p class="for" aria-label="Feito para pequenos negócios, lojas, restaurantes, profissionais e empresas de serviços.">Feito para <span class="rot" aria-hidden="true"><span>pequenos negócios</span><span>lojas</span><span>restaurantes</span><span>profissionais</span><span>empresas de serviços</span></span></p>
     </div>
   </div>
 </section>
@@ -1177,6 +1210,20 @@ details[open] p{animation:rise .45s ease both}
     d.querySelectorAll('.rv').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*60+'ms'; io.observe(el); });
   } else d.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
 
+
+  /* ---------- movimento contínuo extra ---------- */
+  if(!reduce){
+    // luzes suaves nas seções claras
+    const faq=d.querySelector('.faq-grid'); 
+    [d.querySelector('.problem'),d.getElementById('portfolio'),d.getElementById('como-funciona'),d.getElementById('sobre'),faq&&faq.closest('section')].forEach(sec=>{
+      if(!sec) return; sec.classList.add('lt');
+      const o=d.createElement('div');o.className='orbs soft';o.setAttribute('aria-hidden','true');o.innerHTML='<i></i><i></i><i></i>';sec.prepend(o);
+    });
+    // grades inclinam com a velocidade da rolagem
+    const sk=[...d.querySelectorAll('.services,.pf-grid')]; let lastY2=scrollY, cur=0, tgt=0, run=false;
+    function skLoop(){ cur+=(tgt-cur)*.18; tgt*=.85; sk.forEach(el=>el.style.transform=Math.abs(cur)<.02?'':'skewY('+cur.toFixed(2)+'deg)'); if(Math.abs(cur)>.02||Math.abs(tgt)>.02) requestAnimationFrame(skLoop); else run=false; }
+    addEventListener('scroll',()=>{ const dy=scrollY-lastY2; lastY2=scrollY; tgt=Math.max(-3.5,Math.min(3.5,dy*.08)); if(!run){run=true;requestAnimationFrame(skLoop);} },{passive:true});
+  }
   /* ---------- animações mais fortes ---------- */
   if(!reduce){
     // direções e sequência
