@@ -237,7 +237,7 @@ p{margin:0}
 @keyframes shine{0%{transform:translateX(-130%)}35%,100%{transform:translateX(130%)}}
 @media (max-width:1000px){
   .hl{will-change:auto}
-  .hero-card{animation:cfloat 7s ease-in-out infinite}
+  .hero-card{animation:cfloat 8s ease-in-out infinite}
   .hl-glow{animation:glowp 6s ease-in-out infinite}
   .hl-nav{animation:rise .7s .05s both}
   .hl-type{animation:rise .8s .15s both}
@@ -562,7 +562,7 @@ details[open] p{animation:rise .45s ease both}
 .cursor-glow{position:fixed;left:0;top:0;width:440px;height:440px;margin:-220px 0 0 -220px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,61,.13),transparent 60%);pointer-events:none;z-index:55;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
 /* hero do celular mais animada */
 @keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-13px) scale(1.045)}}
-@keyframes cfloat{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-8px) rotate(-.6deg)}75%{transform:translateY(-4px) rotate(.6deg)}}
+@keyframes cfloat{0%,100%{transform:translateY(0) rotateY(0)}25%{transform:translateY(-8px) rotateY(-9deg)}50%{transform:translateY(-3px) rotateY(0)}75%{transform:translateY(-8px) rotateY(9deg)}}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(-3deg)}}
 @keyframes pan{0%,100%{transform:scale(1.05) translateX(0)}50%{transform:scale(1.18) translateX(-18px)}}
 @media (prefers-reduced-motion:reduce){.orbs,.cursor-glow{display:none}.marquee.alt{transform:none}}
@@ -1134,7 +1134,8 @@ summary:hover{transform:translateX(6px);color:var(--accent)}
       const rotY=(-6*sm(.15,.3,t)+14*sm(.3,.55,t))*rel*k;
       const rotX=-4*sm(.25,.6,t)*rel*k;
       mx+=(tx-mx)*.06; my+=(ty-my)*.06;
-      card.style.transform='rotateY('+(rotY+mx*4*k).toFixed(2)+'deg) rotateX('+(rotX-my*3*k).toFixed(2)+'deg)';
+      const sway=Math.sin(now/1500)*3.5*rel;
+      card.style.transform='rotateY('+(rotY+sway+mx*4*k).toFixed(2)+'deg) rotateX('+(rotX-my*3*k).toFixed(2)+'deg)';
       L.glow.style.opacity=(.6+.4*sm(0,.15,t)*rel).toFixed(2);
       L.glow.style.transform='translateZ('+(-140*sep(0)*kz).toFixed(1)+'px)';
       const z=(el,i,d,x,y)=>{const v=sep(i);el.style.transform='translateZ('+(d*v*kz).toFixed(1)+'px)'+(x?' translateX('+(x*v*kz).toFixed(1)+'px)':'')+(y?' translateY('+(y*v*kz).toFixed(1)+'px)':'');return v};
