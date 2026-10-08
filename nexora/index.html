@@ -508,6 +508,64 @@ a.pf:hover .thumb::after{animation:shine 1s ease both}
 .final .btn:not(.btn-ghost),.offer .btn{animation:ctaPulse 2.4s ease-out infinite}
 details[open] p{animation:rise .45s ease both}
 @media (prefers-reduced-motion:reduce){.marquee{transform:none}.mq-track{animation:none}.progress{display:none}}
+
+/* ===== animações mais fortes ===== */
+.js-rv .rv{opacity:0;transform:translateY(70px) scale(.92);transition:opacity .9s ease,transform 1.15s cubic-bezier(.34,1.45,.5,1)}
+.js-rv .rv.in{opacity:1;transform:none}
+.js-rv .rv.rv-l{transform:translateX(-110px) rotate(-5deg) scale(.94)}
+.js-rv .rv.rv-r{transform:translateX(110px) rotate(5deg) scale(.94)}
+.js-rv .rv.rv-z{transform:scale(.75);opacity:0}
+.js-rv .svc.rv{transform:perspective(900px) rotateX(-45deg) translateY(90px);transform-origin:50% 100%}
+.js-rv .rv.in.rv-l,.js-rv .rv.in.rv-r,.js-rv .rv.in.rv-z,.js-rv .svc.rv.in{transform:none;opacity:1}
+.split .w>span{transform:translateY(115%) rotate(10deg);transition:transform 1s cubic-bezier(.34,1.5,.5,1)}
+@keyframes kick{from{opacity:0;letter-spacing:.7em}to{opacity:1;letter-spacing:.16em}}
+.js-rv .rv.in .kicker{animation:kick 1s cubic-bezier(.2,.8,.2,1) both}
+/* ícones mexendo */
+@keyframes wig{0%,78%,100%{transform:none}82%{transform:rotate(-14deg) scale(1.2)}87%{transform:rotate(12deg) scale(1.2)}92%{transform:rotate(-6deg) scale(1.1)}}
+.ico svg{animation:wig 4.5s ease-in-out infinite}
+.svc:nth-child(3n+2) .ico svg,.benefit:nth-child(3n+2) .ico svg{animation-delay:1.4s}
+.svc:nth-child(3n) .ico svg,.benefit:nth-child(3n) .ico svg{animation-delay:2.8s}
+/* números do processo */
+@keyframes numpop{0%{transform:scale(0) rotate(-30deg);opacity:0}60%{transform:scale(1.4) rotate(8deg);opacity:1}100%{transform:none;opacity:1}}
+.steps li::before{display:block;transform-origin:left center}
+.js-rv .steps.rv.in li::before{animation:numpop .8s cubic-bezier(.3,1.5,.5,1) both}
+.steps li:nth-child(1)::before{animation-delay:.2s}.steps li:nth-child(2)::before{animation-delay:.35s}.steps li:nth-child(3)::before{animation-delay:.5s}
+.steps li:nth-child(4)::before{animation-delay:.65s}.steps li:nth-child(5)::before{animation-delay:.8s}.steps li:nth-child(6)::before{animation-delay:.95s}
+.steps li{transition:transform .3s}.steps li:hover{transform:translateY(-6px) rotate(-1deg)}
+/* preço pulsando */
+@keyframes pricepulse{0%,100%{transform:scale(1);text-shadow:0 0 0 rgba(255,106,61,0)}50%{transform:scale(1.07);text-shadow:0 0 28px rgba(255,106,61,.55)}}
+.offer .price strong{display:inline-block;transform-origin:left bottom}
+.offer.in .price strong{animation:pricepulse 2.6s 1.6s ease-in-out infinite}
+/* palavra de destaque brilhando */
+@keyframes shimmer{to{background-position:200% 0}}
+.hero h1 em,.svc.main h3,.final h2 .w:last-child span{background:linear-gradient(90deg,#FF6A3D,#FFB547,#FF8A5C,#FF6A3D);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3.5s linear infinite}
+.final h2 .w:last-child span{transition:transform 1s cubic-bezier(.34,1.5,.5,1)}
+/* brilho passando em todos os botões */
+.btn:not(.btn-ghost){position:relative;overflow:hidden}
+.btn:not(.btn-ghost)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-130%);animation:shine 4.5s 1s infinite;pointer-events:none}
+/* luzes passeando no fundo escuro */
+.dark{position:relative;overflow:hidden}
+.dark>.wrap,.final>.wrap{position:relative;z-index:1}
+.orbs{position:absolute;inset:0;pointer-events:none;z-index:0}
+.orbs i{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,61,.22),transparent 65%)}
+.orbs i:nth-child(1){top:-160px;left:-120px;animation:orb1 16s ease-in-out infinite}
+.orbs i:nth-child(2){bottom:-200px;right:-140px;background:radial-gradient(circle,rgba(255,181,71,.16),transparent 65%);animation:orb2 19s ease-in-out infinite}
+.orbs i:nth-child(3){top:40%;left:45%;width:380px;height:380px;animation:orb3 13s ease-in-out infinite}
+@keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(55vw,240px)}}
+@keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50vw,-280px)}}
+@keyframes orb3{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30vw,-120px) scale(1.3)}66%{transform:translate(20vw,90px) scale(.8)}}
+/* segunda faixa, no sentido contrário */
+.marquee.alt{background:var(--ink);color:#fff;transform:rotate(1.4deg);margin:-20px 0 -20px -5vw;box-shadow:0 18px 40px -20px rgba(0,0,0,.7)}
+.marquee.alt .mq-track{animation-direction:reverse;animation-duration:26s}
+.marquee.alt span::after{color:var(--accent);opacity:1}
+/* luz seguindo o mouse (computador) */
+.cursor-glow{position:fixed;left:0;top:0;width:440px;height:440px;margin:-220px 0 0 -220px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,61,.13),transparent 60%);pointer-events:none;z-index:55;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
+/* hero do celular mais animada */
+@keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-13px) scale(1.045)}}
+@keyframes cfloat{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-8px) rotate(-.6deg)}75%{transform:translateY(-4px) rotate(.6deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(-3deg)}}
+@keyframes pan{0%,100%{transform:scale(1.05) translateX(0)}50%{transform:scale(1.18) translateX(-18px)}}
+@media (prefers-reduced-motion:reduce){.orbs,.cursor-glow{display:none}.marquee.alt{transform:none}}
 </style>
 </head>
 <body>
@@ -785,6 +843,8 @@ details[open] p{animation:rise .45s ease both}
   </div>
 </section>
 
+<div class="marquee alt" aria-hidden="true"><div class="mq-track"><span>Atendimento direto</span><span>Preço informado antes</span><span>Pagamento após aprovação</span><span>7 dias para correções</span><span>Online em todo o Brasil</span><span>Campinas e região</span><span>Atendimento direto</span><span>Preço informado antes</span><span>Pagamento após aprovação</span><span>7 dias para correções</span><span>Online em todo o Brasil</span><span>Campinas e região</span></div></div>
+
 <!-- FAQ -->
 <section style="background:#fff">
   <div class="wrap faq-grid">
@@ -1030,7 +1090,7 @@ details[open] p{animation:rise .45s ease both}
               if(!part) return;
               if(/^\s+$/.test(part)){frag.appendChild(d.createTextNode(part));return;}
               const w=d.createElement('span');w.className='w';
-              const i=d.createElement('span');i.textContent=part;i.style.transitionDelay=(n++*55)+'ms';
+              const i=d.createElement('span');i.textContent=part;i.style.transitionDelay=(n++*75)+'ms';
               w.appendChild(i);frag.appendChild(w);
             });
             node.replaceWith(frag);
@@ -1069,6 +1129,33 @@ details[open] p{animation:rise .45s ease both}
     const io=new IntersectionObserver(en=>en.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
     d.querySelectorAll('.rv').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*60+'ms'; io.observe(el); });
   } else d.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+
+  /* ---------- animações mais fortes ---------- */
+  if(!reduce){
+    // direções e sequência
+    d.querySelectorAll('.pf.rv').forEach((el,i)=>el.classList.add(i%2?'rv-r':'rv-l'));
+    d.querySelectorAll('.mini.rv').forEach(el=>el.classList.add('rv-r'));
+    d.querySelectorAll('.offer.rv,.process-media.rv').forEach(el=>el.classList.add('rv-z'));
+    d.querySelectorAll('.problem-grid.rv,.about-text.rv').forEach(el=>el.classList.add('rv-r'));
+    d.querySelectorAll('.photos.rv').forEach(el=>el.classList.add('rv-l'));
+    d.querySelectorAll('.services,.pf-grid,.side').forEach(g=>[...g.children].forEach((c,i)=>{ c.style.transitionDelay=(i%3)*130+'ms'; }));
+    d.querySelectorAll('.rv').forEach(el=>el.addEventListener('transitionend',()=>{el.style.transitionDelay='0ms'},{once:true}));
+    // luzes no fundo escuro
+    d.querySelectorAll('.dark,.final').forEach(sec=>{ const o=d.createElement('div');o.className='orbs';o.setAttribute('aria-hidden','true');o.innerHTML='<i></i><i></i><i></i>';sec.prepend(o); });
+    // parallax na rolagem
+    const par=[...d.querySelectorAll('.problem h2,.final h2')].map(el=>[el,.07])
+      .concat([...d.querySelectorAll('.photos .photo')].map((el,i)=>[el,[-.06,.1,.16][i]||.08]));
+    let pk=false;
+    function onPar(){ const vh=innerHeight; par.forEach(([el,sp])=>{ const r=el.getBoundingClientRect(); if(r.bottom<-200||r.top>vh+200) return; const c=r.top+r.height/2-vh/2; el.style.transform='translate3d(0,'+(-c*sp).toFixed(1)+'px,0)'; }); pk=false; }
+    addEventListener('scroll',()=>{ if(!pk){pk=true;requestAnimationFrame(onPar);} },{passive:true}); onPar();
+    // luz seguindo o mouse
+    if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+      const g=d.createElement('div');g.className='cursor-glow';g.setAttribute('aria-hidden','true');d.body.appendChild(g);
+      let gx=innerWidth/2,gy=innerHeight/2,cx=gx,cy=gy,on=false;
+      addEventListener('pointermove',e=>{gx=e.clientX;gy=e.clientY;if(!on){on=true;g.style.opacity='1';}},{passive:true});
+      (function loop(){cx+=(gx-cx)*.12;cy+=(gy-cy)*.12;g.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0)';requestAnimationFrame(loop);})();
+    }
+  }
 })();
 </script>
 </body>
