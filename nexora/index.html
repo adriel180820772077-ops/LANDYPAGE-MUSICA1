@@ -232,7 +232,7 @@ p{margin:0}
   .hl-chip{bottom:120px;width:40px;height:40px}
   .hl-fx .r1,.hl-fx .r4{display:none}
 }
-@media (prefers-reduced-motion:reduce){.hl-fx{display:none}}
+/* reduce-motion: hl-fx mantido */
 
 /* hero no celular: movimento 2D suave (sem profundidade) */
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -471,10 +471,7 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   .facts li{font-size:13.5px;padding:8px 12px}
   .hide-s{display:none}.logo span{display:none}
 }
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .js-rv .rv{opacity:1;transform:none}
-}
+/* motion mantido mesmo com "reduzir movimento" do sistema, por opção do dono */
 
 /* ===== animações do site ===== */
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
@@ -525,7 +522,7 @@ a.pf:hover .thumb::after{animation:shine 1s ease both}
 @keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(255,106,61,.55)}100%{box-shadow:0 0 0 18px rgba(255,106,61,0)}}
 .final .btn:not(.btn-ghost),.offer .btn{animation:ctaPulse 2.4s ease-out infinite}
 details[open] p{animation:rise .45s ease both}
-@media (prefers-reduced-motion:reduce){.marquee{transform:none}.mq-track{animation:none}.progress{display:none}}
+/* reduce-motion: marquee/progress mantidos */
 
 /* ===== animações mais fortes ===== */
 .js-rv .rv{opacity:0;transform:translateY(70px) scale(.92);transition:opacity .9s ease,transform 1.15s cubic-bezier(.34,1.45,.5,1)}
@@ -583,7 +580,7 @@ details[open] p{animation:rise .45s ease both}
 @keyframes cfloat{0%,100%{transform:translateY(0) rotateY(0)}25%{transform:translateY(-8px) rotateY(-9deg)}50%{transform:translateY(-3px) rotateY(0)}75%{transform:translateY(-8px) rotateY(9deg)}}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(-3deg)}}
 @keyframes pan{0%,100%{transform:scale(1.05) translateX(0)}50%{transform:scale(1.18) translateX(-18px)}}
-@media (prefers-reduced-motion:reduce){.orbs,.cursor-glow{display:none}.marquee.alt{transform:none}}
+/* reduce-motion: orbs/cursor/marquee mantidos */
 
 /* ===== hero bem mais animada ===== */
 .hl-halo,.hl-sparks{position:absolute;top:49px;right:0;bottom:0;width:62%;pointer-events:none}
@@ -626,7 +623,7 @@ details[open] p{animation:rise .45s ease both}
 @media (max-width:640px){.hl-halo,.hl-sparks{height:260px}}
 @keyframes heroPop{0%,100%{transform:none}20%{transform:translateY(-10px) scale(1.03)}42%{transform:translateY(-26px) scale(1.12) rotate(-1.2deg)}58%{transform:translateY(-22px) scale(1.11) rotate(1.2deg)}80%{transform:translateY(-4px) scale(1.01)}}
 @keyframes uiSlide{0%,100%{transform:none}25%{transform:translate(-8px,-12px) rotate(-3deg)}45%{transform:translate(10px,-22px) rotate(4deg) scale(1.08)}70%{transform:translate(0,-6px) rotate(-1deg)}}
-@media (prefers-reduced-motion:reduce){.hl-halo,.hl-sparks,.hl-photo::before,.hl-shell::after{display:none}}
+/* reduce-motion: halo/sparks mantidos */
 
 /* ===== movimento contínuo nas seções claras ===== */
 section>.wrap{position:relative;z-index:1}
@@ -659,7 +656,7 @@ section>.wrap{position:relative;z-index:1}
 .kicker::after{content:"";display:inline-block;width:6px;height:6px;margin-left:10px;vertical-align:middle;border-radius:50%;background:currentColor;animation:blink 1.3s ease-in-out infinite}
 summary{transition:transform .25s,color .25s}
 summary:hover{transform:translateX(6px);color:var(--accent)}
-@media (prefers-reduced-motion:reduce){.rot span:not(:first-child){display:none}.rot span{opacity:1!important;transform:none!important}}
+/* reduce-motion: palavra rotativa mantida */
 </style>
 </head>
 <body>
@@ -1109,7 +1106,7 @@ summary:hover{transform:translateX(6px);color:var(--accent)}
   const top=d.getElementById('top'), st=d.getElementById('sticky'), hero=d.getElementById('inicio'), fin=d.querySelector('.final');
   let finVis=false, ticking=false;
   new IntersectionObserver(en=>{ finVis=en[0].isIntersecting; onScroll(); }).observe(fin);
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce=false; /* animações sempre ativas (o dono optou por manter o movimento mesmo com "reduzir movimento" do sistema) */
 
   function onScroll(){
     const y=scrollY, h=hero.offsetHeight;
